@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Get from '../ApiService';
+import LazyLoader from '../LazyLoader';
 import Spinner from '../Spinner';
+import './loompaList.css';
 
 export default () => {
   const [loompas, setLoompas] = useState([]);
@@ -8,13 +10,21 @@ export default () => {
   const [pagination, setPagination] = useState({
     current: null,
     total: null,
+    hasMore: true,
   });
+
+  // hasMore: true,
+  // isLoading: false,
 
   const getAllLoompas = (page) => {
     Get.allLoompas(page)
       .then((res) => {
-        setLoompas(res.data.results);
-        setPagination({ current: res.data.current, total: res.data.total });
+        setLoompas([...loompas, ...res.data.results]);
+        setPagination({
+          current: res.data.current,
+          total: res.data.total,
+          hasMore: res.data.current < res.data.total,
+        });
       })
       .then(() => setStatus(false));
   };
@@ -30,21 +40,19 @@ export default () => {
   }, []);
 
   return (
-    <div>
-      LoompaService works
+    <div className="list-container">
       {!status
         ? (
-          <div>
-            {
-              loompas.map((loompa) => (
-                <div>
-                  {loompa.first_name}
-                </div>
-              ))
-            }
-            {console.log('FetchedLoompas', loompas)}
+          <LazyLoader
+            currentPage={pagination.current}
+            totalPages={pagination.total}
+            hasMore={pagination.hasMore}
+            loadLoompas={getAllLoompas}
+            loompaItems={loompas}
+          >
+            {/* {console.log('FetchedLoompas', loompas)} */}
             {console.log('page', pagination)}
-          </div>
+          </LazyLoader>
         )
         : (
           <div>

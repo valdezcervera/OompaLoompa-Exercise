@@ -1,17 +1,20 @@
-import React from 'react';
+/* eslint-disable react/jsx-fragments */
+import React, { Fragment } from 'react';
 import Navbar from './components/NavBar';
 import LoompaList from './components/LoompaList';
-import './App.scss';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
       <Navbar />
-      <header className="App-header">
-        Find your Oompa Loompa
-      </header>
-      <LoompaList className="App-list" />
-    </div>
+      <div className="App">
+        <header className="App-header">
+          Find your Oompa Loompa
+        </header>
+        <LoompaList className="App-list" />
+      </div>
+    </Fragment>
   );
 }
 
