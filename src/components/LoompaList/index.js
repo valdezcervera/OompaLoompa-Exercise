@@ -1,44 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import Get from '../ApiService';
+/* eslint-disable arrow-body-style */
+import React from 'react';
+import PropTypes from 'prop-types';
 import LazyLoader from '../LazyLoader';
 import Spinner from '../Spinner';
 import './loompaList.css';
 
-export default () => {
-  const [loompas, setLoompas] = useState([]);
-  const [status, setStatus] = useState(true);
-  const [pagination, setPagination] = useState({
-    current: null,
-    total: null,
-    hasMore: true,
-  });
-
-  // hasMore: true,
-  // isLoading: false,
-
-  const getAllLoompas = (page) => {
-    Get.allLoompas(page)
-      .then((res) => {
-        setLoompas([...loompas, ...res.data.results]);
-        setPagination({
-          current: res.data.current,
-          total: res.data.total,
-          hasMore: res.data.current < res.data.total,
-        });
-      })
-      .then(() => setStatus(false));
-  };
-  const findOneLoompa = (id) => {
-    Get.oneLoompa(id)
-      .then((res) => {
-        // do some stuff with this loompa guy here
-      });
-  };
-
-  useEffect(() => {
-    getAllLoompas();
-  }, []);
-
+const LoompaList = ({
+  getAllLoompas,
+  loompas,
+  pagination,
+  status,
+}) => {
   return (
     <div className="list-container">
       {!status
@@ -51,7 +23,7 @@ export default () => {
             loompaItems={loompas}
           >
             {/* {console.log('FetchedLoompas', loompas)} */}
-            {console.log('page', pagination)}
+            {/* {console.log('page', pagination)} */}
           </LazyLoader>
         )
         : (
@@ -63,3 +35,22 @@ export default () => {
     </div>
   );
 };
+
+LoompaList.propTypes = {
+  getAllLoompas: PropTypes.func,
+  loompas: PropTypes.arrayOf(PropTypes.object),
+  pagination: PropTypes.shape({
+    current: PropTypes.number,
+    total: PropTypes.number,
+    hasMore: PropTypes.bool,
+  }),
+  status: PropTypes.bool,
+};
+LoompaList.defaultProps = {
+  getAllLoompas: 'must pass the api calling function',
+  loompas: 'must pass the list of loompas (array of objects)',
+  pagination: 'must pass the pagination object',
+  status: 'must pass the loading status boolean',
+};
+
+export default LoompaList;
