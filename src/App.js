@@ -2,14 +2,14 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Get from './components/ApiService';
 import Navbar from './components/NavBar';
-import LoompaList from './components/LoompaList';
+import LoompaListView from './components/LoompaListView';
 import './App.css';
 
 export const AppContext = React.createContext(null);
 
-function App() {
+const App = () => {
   const [loompas, setLoompas] = useState([]);
-  const [status, setStatus] = useState(true);
+  const [status, setStatus] = useState(false);
   const [pagination, setPagination] = useState({
     current: null,
     total: null,
@@ -28,14 +28,7 @@ function App() {
           hasMore: res.data.current < res.data.total,
         });
       })
-      .then(() => setStatus(false));
-  };
-
-  const findOneLoompa = (id) => {
-    Get.oneLoompa(id)
-      .then((res) => {
-        // do some stuff with this loompa guy here
-      });
+      .then(() => setStatus(true));
   };
 
   useEffect(() => {
@@ -48,7 +41,6 @@ function App() {
   const handleList = (filteredData) => {
     setFilteredList(filteredData);
   };
-  console.log('fromFilter', filteredList);
   return (
     <Fragment>
       <AppContext.Provider value={{ loompas, filterName, handleList }}>
@@ -59,7 +51,7 @@ function App() {
           <header className="App-header">
             Find your Oompa Loompa
           </header>
-          <LoompaList
+          <LoompaListView
             className="App-list"
             getAllLoompas={getAllLoompas}
             loompas={filteredList}
@@ -70,6 +62,6 @@ function App() {
       </AppContext.Provider>
     </Fragment>
   );
-}
+};
 
 export default App;

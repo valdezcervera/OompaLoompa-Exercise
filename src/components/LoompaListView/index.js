@@ -13,7 +13,7 @@ const LoompaList = ({
 }) => {
   return (
     <div className="list-container">
-      {!status
+      {status
         ? (
           <LazyLoader
             currentPage={pagination.current}

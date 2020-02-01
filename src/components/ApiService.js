@@ -3,7 +3,7 @@ import axios from 'axios';
 /* eslint-disable no-console */
 const BASE_URL = 'https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus';
 const loompaListUrl = '/oompa-loompas?page=';
-const loompaDetailsUrl = '​/oompa-loompas/';
+const loompaDetailsUrl = '/oompa-loompas/';
 
 const fetchLoompas = (url) => {
   return axios.get(`${BASE_URL}${url}`)

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-fragments */
 import React, { Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 
@@ -9,6 +10,13 @@ const LazyLoader = ({
   loadLoompas,
   loompaItems,
 }) => {
+  const history = useHistory();
+  const toggleView = (loompa) => {
+    history.push({
+      pathname: `/details/${loompa.id}`,
+    });
+  };
+
   window.onscroll = debounce(() => {
     if (!hasMore) return;
     if (
@@ -25,7 +33,11 @@ const LazyLoader = ({
         loompaItems.map((loompa) => (
           <div
             className="thumbnail"
+            role="button"
+            tabIndex="0"
             key={loompa.id}
+            onClick={() => toggleView(loompa)}
+            onKeyPress={() => toggleView(loompa)}
           >
             <img className="loompa_img" src={loompa.image} alt="loompa_img" />
             <h3>{loompa.first_name}</h3>
