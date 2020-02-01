@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Get from '../ApiService';
+import NavBar from '../NavBar';
 
 const LoompaDetailsView = () => {
   const [oompaLoompa, setOompaLoompa] = useState({});
@@ -22,8 +23,26 @@ const LoompaDetailsView = () => {
 
   return (
     <div>
-      <h1>{oompaLoompa.first_name}</h1>
-      <button type="button" onClick={() => goback()}>back</button>
+      <div
+        role="button"
+        tabIndex="0"
+        onClick={() => goback()}
+        onKeyPress={() => goback()}
+      >
+        <NavBar />
+      </div>
+      <div className="image-container">
+        <img src={oompaLoompa.image} alt="" />
+      </div>
+      <div className="loompa-details">
+        <h3>
+          {oompaLoompa.first_name}
+          {oompaLoompa.last_name}
+        </h3>
+        <p>{oompaLoompa.gender}</p>
+        <p>{oompaLoompa.profession}</p>
+        <h6>{oompaLoompa.description}</h6>
+      </div>
     </div>
   );
 };

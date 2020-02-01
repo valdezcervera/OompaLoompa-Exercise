@@ -2,14 +2,19 @@ p, h3 {
     margin: 0;   
 }
 .list-container {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     width: 50vw;
     margin: 0 auto;
 }
 .thumbnail {
-    float: left;
+    flex-grow: 1;
+    width: 33%;
     height: 300px;
 }
 .loompa_img{
     height: 200px;
+}
+.spin {
+    margin: 0 auto;
 }

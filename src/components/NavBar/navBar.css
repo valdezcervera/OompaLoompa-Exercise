@@ -8,29 +8,6 @@
     background-color: lightgray;
 }
 .navbar_logo {
-    margin-left: 10em;
-}
-
-.navbar_search_container {
-    display: flex;
-    justify-content: flex-end;
-}
-.navbar_search {
-    margin-right: 10em;
-    border: solid 1px;
-    padding: 5px;
-}
-.navbar_search_icon {
-    height: 20px;
-    margin: 0 5px 0 5px;
-}
-.navbar_search_input {
-    outline: none;
-    border-top-style: none;
-    border-right-style: groove;
-    border-bottom-style: none;
-    border-left-style: none;
-    height: 30px;
-    width: 150px;
-    font-size: 20px;
+    margin: 1em 2em 0 10em;
+    height: 40px;
 }

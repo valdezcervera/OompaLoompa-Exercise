@@ -29,8 +29,8 @@ const LazyLoader = ({
 
   return (
     <Fragment>
-      {
-        loompaItems.map((loompa) => (
+      {loompaItems
+        ? loompaItems.map((loompa) => (
           <div
             className="thumbnail"
             role="button"
@@ -45,7 +45,7 @@ const LazyLoader = ({
             <p>{loompa.profession}</p>
           </div>
         ))
-      }
+        : <div>Conection error</div>}
     </Fragment>
   );
 };

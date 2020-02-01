@@ -27,7 +27,7 @@ const LoompaList = ({
           </LazyLoader>
         )
         : (
-          <div>
+          <div className="spin">
             <Spinner />
           Loading, please wait...
           </div>

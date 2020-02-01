@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import React, { useState, useEffect, Fragment } from 'react';
 import Get from './components/ApiService';
-import Navbar from './components/NavBar';
+import Search from './components/Search';
 import LoompaListView from './components/LoompaListView';
 import './App.css';
 
@@ -17,6 +17,7 @@ const App = () => {
   });
   const [filterName, setFilterName] = useState('');
   const [filteredList, setFilteredList] = useState([]);
+  const [error, setError] = useState();
 
   const getAllLoompas = (page) => {
     Get.allLoompas(page)
@@ -28,9 +29,10 @@ const App = () => {
           hasMore: res.data.current < res.data.total,
         });
       })
-      .then(() => setStatus(true));
+      .then(() => setStatus(true))
+      .catch((err) => setError(err));
   };
-
+  if (error) alert('No conection!');
   useEffect(() => {
     getAllLoompas();
   }, []);
@@ -45,7 +47,7 @@ const App = () => {
     <Fragment>
       <AppContext.Provider value={{ loompas, filterName, handleList }}>
         <div className="App">
-          <Navbar
+          <Search
             handleChange={handleChange}
           />
           <header className="App-header">
