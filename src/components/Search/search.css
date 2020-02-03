@@ -6,6 +6,7 @@
     margin-right: 10em;
     border: solid 1px;
     padding: 5px;
+    border-radius: 5px;
 }
 .search_icon {
     height: 20px;

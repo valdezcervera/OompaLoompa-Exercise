@@ -1,6 +1,8 @@
 .navbar {
     display: flex;
     flex-direction: column;
+    width: 95vw;
+    margin: 1em auto;
 }
 .navbar_logo_container {
     display: flex;
@@ -8,6 +10,6 @@
     background-color: lightgray;
 }
 .navbar_logo {
-    margin: 1em 2em 0 10em;
+    margin: 1em 2em 0 12em;
     height: 40px;
 }

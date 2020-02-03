@@ -21,10 +21,7 @@ const LoompaList = ({
             hasMore={pagination.hasMore}
             loadLoompas={getAllLoompas}
             loompaItems={loompas}
-          >
-            {/* {console.log('FetchedLoompas', loompas)} */}
-            {/* {console.log('page', pagination)} */}
-          </LazyLoader>
+          />
         )
         : (
           <div className="spin">

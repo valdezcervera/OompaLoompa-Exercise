@@ -39,10 +39,12 @@ const LazyLoader = ({
             onClick={() => toggleView(loompa)}
             onKeyPress={() => toggleView(loompa)}
           >
-            <img className="loompa_img" src={loompa.image} alt="loompa_img" />
-            <h3>{loompa.first_name}</h3>
-            <p>{loompa.gender}</p>
-            <p>{loompa.profession}</p>
+            <img className="loompa-img" src={loompa.image} alt="loompa_img" />
+            <div className="loompa-thumb-details">
+              <h3 className="name">{loompa.first_name}</h3>
+              <p>{loompa.gender}</p>
+              <p>{loompa.profession}</p>
+            </div>
           </div>
         ))
         : <div>Conection error</div>}

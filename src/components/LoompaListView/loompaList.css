@@ -4,17 +4,30 @@ p, h3 {
 .list-container {
     display: flex;
     flex-wrap: wrap;
-    width: 50vw;
-    margin: 0 auto;
+    width: 80vw;
+    margin: 3rem auto 0;
 }
 .thumbnail {
     flex-grow: 1;
-    width: 33%;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
-.loompa_img{
-    height: 200px;
+.loompa-img{
+    height: 16rem;
+    width: 480px;
+    object-fit: cover;
 }
 .spin {
     margin: 0 auto;
 }
+.loompa-thumb-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 480px;
+    margin: 1.3rem;
+}
+/* visited wont work until re-render issue gets fixed */
+.name:visited {
+    color: lightskyblue;
+  }

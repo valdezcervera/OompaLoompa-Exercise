@@ -1,0 +1,33 @@
+.detail-view-container {
+    display: flex;
+    justify-content: center;
+}
+.loompa-container {
+    display: flex;
+    max-width: 85vw;
+    height: 55vh;
+    margin-top: 10vh;
+}
+.loompa-image {
+    object-fit: cover;
+    object-position: center;
+}
+.loompa-details {
+    max-width: 30vw;
+    padding: 0 2rem 2rem 2rem;
+    word-wrap: break-word;
+}
+.loompa-name {
+    margin: 0;
+    font-size: 2rem;
+}
+.loompa-gender-profession {
+    color: grey;
+    font-size: 1.2rem;
+}
+.loompa-description {
+    font-size: 1.5rem;
+    font-weight:normal;
+    line-height: 2rem;
+    margin-top: 2rem;
+}

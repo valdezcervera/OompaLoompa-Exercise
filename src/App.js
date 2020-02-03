@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/jsx-fragments */
 import React, { useState, useEffect, Fragment } from 'react';
 import Get from './components/ApiService';
@@ -52,6 +53,7 @@ const App = () => {
           />
           <header className="App-header">
             Find your Oompa Loompa
+            <p className="header-subtitle">There are more than 100k</p>
           </header>
           <LoompaListView
             className="App-list"
