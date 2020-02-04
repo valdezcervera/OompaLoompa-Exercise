@@ -2,8 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LazyLoader from '../LazyLoader';
-import Spinner from '../Spinner';
-import './loompaList.css';
+import Spinner from '../../Spinner';
 
 const LoompaList = ({
   getAllLoompas,

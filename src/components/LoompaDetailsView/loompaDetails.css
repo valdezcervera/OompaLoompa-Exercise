@@ -20,14 +20,20 @@
 .loompa-name {
     margin: 0;
     font-size: 2rem;
+    text-align: left;
 }
 .loompa-gender-profession {
     color: grey;
     font-size: 1.2rem;
+    text-align: left;
 }
 .loompa-description {
     font-size: 1.5rem;
     font-weight:normal;
     line-height: 2rem;
     margin-top: 2rem;
+    text-align: justify;
+}
+.loompa-description h1 {
+    font-size: 2rem;
 }

@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Filter from '../Filter';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import './search.css';
 
 const searchIcon = 'https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png';

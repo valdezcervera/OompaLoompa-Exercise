@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
+import './loompaList.css';
 
 const LazyLoader = ({
   currentPage,
@@ -31,19 +32,20 @@ const LazyLoader = ({
     <Fragment>
       {loompaItems
         ? loompaItems.map((loompa) => (
-          <div
-            className="thumbnail"
-            role="button"
-            tabIndex="0"
-            key={loompa.id}
-            onClick={() => toggleView(loompa)}
-            onKeyPress={() => toggleView(loompa)}
-          >
-            <img className="loompa-img" src={loompa.image} alt="loompa_img" />
-            <div className="loompa-thumb-details">
-              <h3 className="name">{loompa.first_name}</h3>
-              <p>{loompa.gender}</p>
-              <p>{loompa.profession}</p>
+          <div className="thumbnail">
+            <div
+              role="button"
+              tabIndex="0"
+              key={loompa.id}
+              onClick={() => toggleView(loompa)}
+              onKeyPress={() => toggleView(loompa)}
+            >
+              <img className="loompa-img" src={loompa.image} alt="loompa_img" />
+              <div className="loompa-thumb-details">
+                <h3 className="name">{loompa.first_name}</h3>
+                <p>{loompa.gender}</p>
+                <p>{loompa.profession}</p>
+              </div>
             </div>
           </div>
         ))

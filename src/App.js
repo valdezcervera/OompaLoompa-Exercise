@@ -1,10 +1,11 @@
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-fragments */
 import React, { useState, useEffect, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Get from './components/ApiService';
-import Search from './components/Search';
-import LoompaListView from './components/LoompaListView';
+import LoompaDetailsView from './components/LoompaDetailsView';
 import './App.css';
+import ListView from './components/ListView';
 
 export const AppContext = React.createContext(null);
 
@@ -46,22 +47,24 @@ const App = () => {
   };
   return (
     <Fragment>
-      <AppContext.Provider value={{ loompas, filterName, handleList }}>
+      <AppContext.Provider value={{
+        loompas,
+        filterName,
+        handleList,
+        handleChange,
+        getAllLoompas,
+        filteredList,
+        pagination,
+        status,
+      }}
+      >
         <div className="App">
-          <Search
-            handleChange={handleChange}
-          />
-          <header className="App-header">
-            Find your Oompa Loompa
-            <p className="header-subtitle">There are more than 100k</p>
-          </header>
-          <LoompaListView
-            className="App-list"
-            getAllLoompas={getAllLoompas}
-            loompas={filteredList}
-            pagination={pagination}
-            status={status}
-          />
+          <Router>
+            <Switch>
+              <Route path="/" exact component={ListView} />
+              <Route path="/details/:id" exact component={LoompaDetailsView} />
+            </Switch>
+          </Router>
         </div>
       </AppContext.Provider>
     </Fragment>

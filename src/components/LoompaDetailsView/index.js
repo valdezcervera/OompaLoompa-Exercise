@@ -14,13 +14,17 @@ const LoompaDetailsView = React.memo(() => {
     });
   };
   const { id } = useParams();
-  // get(loompasURL/id)
+  // get loompa by id
   useEffect(() => {
     Get.oneLoompa(id)
       .then((res) => {
         setOompaLoompa(res.data);
       });
   }, []);
+
+  const createMarkup = () => {
+    return { __html: oompaLoompa.description };
+  };
 
   return (
     <div>
@@ -42,7 +46,7 @@ const LoompaDetailsView = React.memo(() => {
             </h2>
             <p className="loompa-gender-profession">{oompaLoompa.gender}</p>
             <p className="loompa-gender-profession">{oompaLoompa.profession}</p>
-            <h6 className="loompa-description">{oompaLoompa.description}</h6>
+            <h6 className="loompa-description" dangerouslySetInnerHTML={createMarkup()} />
           </div>
         </div>
       </div>

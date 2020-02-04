@@ -1,7 +1,7 @@
 // STRING FILTERING MODULE
 /* eslint-disable arrow-body-style */
 import { useEffect, useContext } from 'react';
-import { AppContext } from '../../App';
+import { AppContext } from '../../../App';
 
 export default () => {
   const { loompas, filterName, handleList } = useContext(AppContext);
